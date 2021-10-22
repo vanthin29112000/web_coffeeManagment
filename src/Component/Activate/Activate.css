@@ -1,0 +1,23 @@
+.activate-container {
+   width: 100%;
+   height: fit-content;
+   padding-top: 80px;
+}
+
+.activate {
+   width: 100%;
+}
+
+.activate__title {
+   text-align: center;
+   font-size: 2em;
+   font-family: "Times New Roman", Times, serif;
+   font-weight: bolder;
+
+   margin-bottom: 16px;
+}
+
+.activate__title i {
+   color: var(--color-template);
+   margin: 0 16px;
+}

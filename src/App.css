@@ -1,0 +1,70 @@
+html,
+body {
+   width: 100vw;
+   height: 100vh;
+}
+
+#App {
+   width: 100%;
+   height: 100%;
+}
+
+body {
+   overflow-x: hidden;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+:root {
+   --color-template: #00aeef;
+   --color-box-shadow: rgba(128, 128, 128, 0.5);
+   --color-icon: #cfd1d3;
+   --color-icon-hover: #909396;
+}
+::-webkit-scrollbar-track {
+   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+   background-color: #f5f5f5;
+   border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+   width: 10px;
+   background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+   border-radius: 10px;
+   background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.44, rgb(122, 153, 217)),
+      color-stop(0.72, rgb(73, 125, 189)),
+      color-stop(0.86, rgb(28, 58, 148))
+   );
+}
+
+.btn {
+   outline: none;
+   cursor: pointer;
+   border: none;
+   background-color: white;
+}
+
+.input {
+   outline: none;
+   border: none;
+   background-color: white;
+}
+
+html {
+   scroll-behavior: smooth;
+}
+
+.notify {
+   color: rgb(223, 1, 1);
+   font-style: italic;
+}
