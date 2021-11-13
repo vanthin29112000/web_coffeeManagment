@@ -47,7 +47,6 @@ const Activate = () => {
             }
          }
       }
-      console.log(i);
 
       if (i >= count && i !== 0) {
          setIsShowListActiveMore(true);
@@ -58,12 +57,12 @@ const Activate = () => {
    };
 
    return (
-      <div className="activate-container" id="Activatepage">
+      <section className="activate-container" id="Activatepage">
          <div className="grid wide activate">
             <div className="row">
                <div className="col l-12">
                   <p className="activate__title">
-                     <i class="far fa-newspaper"></i>Hoạt động & Tin tức
+                     <i className="far fa-newspaper"></i>Hoạt động & Tin tức
                   </p>
                </div>
             </div>
@@ -86,13 +85,13 @@ const Activate = () => {
                         className="btn btn-showmore"
                         onClick={() => onFilterListActivateWithCount(0)}
                      >
-                        Xem tất cả <i class="fas fa-arrow-right"></i>
+                        Xem tất cả <i className="fas fa-arrow-right"></i>
                      </button>
                   ) : null}
                </div>
             </div>
          </div>
-      </div>
+      </section>
    );
 };
-export default Activate;
+export default React.memo(Activate);

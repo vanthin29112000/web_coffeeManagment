@@ -1,0 +1,151 @@
+.infomation-account-container {
+   width: 100vw;
+   height: 100vh;
+   position: fixed;
+   overflow: auto;
+   z-index: 10;
+   background-color: rgba(0, 0, 0, 0.5);
+   top: 0;
+   left: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.infomation-account {
+   width: 40%;
+   height: fit-content;
+   background-color: white;
+   border-radius: 16px;
+   padding: 16px;
+   position: relative;
+}
+
+.btn-close {
+   position: absolute;
+   top: 8px;
+   right: 8px;
+   font-size: 1.3em;
+}
+
+.btn-close:hover {
+   color: var(--color-template);
+}
+
+.infomation-account__title {
+   border-bottom: 1px solid #bebebe;
+   padding: 8px;
+   margin-bottom: 8px;
+}
+
+.infomation-account__list {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.infomation-account__item {
+   width: 100%;
+   padding: 4px;
+}
+
+.item-haft-left,
+.item-haft-right {
+   width: 50%;
+}
+
+.infomation-account__item p {
+   font-weight: 500;
+   color: #727171;
+   margin-bottom: 4px;
+}
+
+.infomation-account__item .input {
+   width: 100%;
+   padding: 8px;
+   border: 1px solid #bebebe;
+   border-radius: 4px;
+   font-size: 1em;
+}
+
+.infomation-account__item-in {
+   position: relative;
+   display: flex;
+   align-items: center;
+}
+
+.infomation-account__item-in .input {
+   padding-right: 32px;
+}
+
+.infomation-account__item i {
+   position: absolute;
+   right: 0;
+   font-size: 1.2em;
+   margin: 8px;
+}
+
+.infomation-account__item .notify p {
+   margin-top: 4px;
+   color: red;
+   margin-left: 8px;
+}
+
+.infomation-account__button {
+   width: 100%;
+   display: flex;
+   justify-content: flex-end;
+   margin-top: 8px;
+}
+
+.infomation-account__button button {
+   width: 128px;
+   padding: 8px 0px;
+   border: 1px solid var(--color-template);
+   border-radius: 8px;
+   font-size: 1em;
+   font-weight: bold;
+   margin: 0px 8px;
+}
+
+.btn-resetpass {
+   background-color: white;
+   color: var(--color-template);
+}
+
+.btn-save {
+   background-color: var(--color-template);
+   color: white;
+}
+
+@media (min-width: 1024px) and (max-width: 1239px) {
+}
+
+@media screen and (max-width: 1023px) {
+}
+
+/* Mobile */
+@media screen and (max-width: 739px) {
+   .infomation-account {
+      width: 100vw;
+   }
+
+   .infomation-account__item {
+      padding: 0px;
+   }
+
+   .item-haft-left,
+   .item-haft-right {
+      width: 49%;
+   }
+
+   .item-haft-right {
+      margin-left: 2%;
+   }
+}
+
+/* Tablet */
+@media screen and (min-width: 740px) and (max-width: 1023px) {
+   .infomation-account {
+      width: 70%;
+   }
+}

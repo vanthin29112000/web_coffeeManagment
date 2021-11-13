@@ -39,4 +39,4 @@ const SlideShowBanner = () => {
       </div>
    );
 };
-export default SlideShowBanner;
+export default React.memo(SlideShowBanner);

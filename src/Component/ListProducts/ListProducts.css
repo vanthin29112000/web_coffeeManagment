@@ -32,7 +32,7 @@
 }
 
 .category__item {
-   --size-icon-category: 108px;
+   --size-icon-category: 86px;
    width: var(--size-icon-category);
    height: fit-content;
    margin: 0 32px;
@@ -52,7 +52,7 @@
 }
 
 .category__item img {
-   width: 84px;
+   width: 64px;
    object-fit: cover;
 }
 

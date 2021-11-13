@@ -1,0 +1,95 @@
+.login-customer__title-bg {
+   width: 80%;
+   height: 32%;
+   position: absolute;
+   top: -10%;
+   left: -10%;
+   z-index: 0;
+   background-color: #3f47e6;
+   color: white;
+   border-radius: 50%;
+}
+
+.login-customer__title-text {
+   position: fixed;
+   z-index: 2;
+   color: white;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.login-customer__input-container {
+   flex-grow: 1;
+}
+
+.login-customer__input input {
+   width: 100%;
+   padding: 16px;
+   border: 1px solid var(--color-box-shadow);
+   border-radius: 4px;
+   font-size: 1em;
+   margin: 4px 0px;
+}
+
+.login-customer__input input:focus {
+   border: 1px solid #3f47e6;
+}
+
+.password {
+   position: relative;
+}
+
+.password i {
+   position: absolute;
+   margin: 0px 8px;
+   right: 0;
+}
+
+.password input {
+   padding-right: 32px;
+}
+
+.login-customer__input-title {
+   font-weight: 500;
+   margin: 8px 0px;
+}
+
+.password {
+   display: flex;
+   align-items: center;
+}
+
+.password i {
+   padding: 0px 8px;
+   font-size: 1.2em;
+}
+
+.password i:hover {
+   color: #3f47e6;
+}
+
+.forgot-pass {
+   float: right;
+   font-style: italic;
+   margin: 16px 0px;
+   cursor: pointer;
+}
+
+.forgot-pass:hover {
+   color: #3f47e6;
+}
+
+@media screen and (max-width: 739px) {
+   .login-customer__title-bg {
+      width: 85%;
+      height: 30%;
+      position: absolute;
+      top: -10%;
+      left: -10%;
+      z-index: 0;
+      background-color: #3f47e6;
+      color: white;
+      border-radius: 50%;
+   }
+}

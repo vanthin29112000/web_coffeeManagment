@@ -4,7 +4,7 @@ const ListActivate = ({ Activate }) => {
    return (
       <div className="col l-4 c-12 m-6 activate__item">
          <div className="activate__item-container">
-            <img src={Activate.img}></img>
+            <img src={Activate.img} alt="img.png"></img>
             <div className="activate__item-info">
                <p className="activate__item-title">{Activate.title}</p>
                <p className="activate__item-infomation">{Activate.info}</p>

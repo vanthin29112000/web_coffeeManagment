@@ -1,9 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import AuthFireBase from "../../Service/Auth";
+
 import "./NavBar.css";
-export const NavBar = () => {
+export const NavBar = ({ user, onSignOut, onShowAlertNotify }) => {
+   const history = useHistory();
+
+   const checkedUser = (e) => {
+      e.preventDefault();
+      if (user !== "") {
+         history.push(`/ShoppingCart`);
+      } else {
+         onShowAlertNotify(
+            "Vui lòng đăng nhập trước khi thực hiện thao tác này !",
+            "3"
+         );
+      }
+   };
+
    return (
-      <div className="navbar-container">
+      <header className="navbar-container">
          <div className="grid wide navbar_pc">
             <div className="row no-gutter navbar">
                <div className="col l-4 m-10 c-8">
@@ -31,11 +47,49 @@ export const NavBar = () => {
                </div>
                <div className="col l-2 m-2 c-4">
                   <div className="login_shopping">
-                     <Link to="/ShoppingCart" className="shopping_icon">
+                     <div className="shopping_icon" onClick={checkedUser}>
                         <i className="fas fa-shopping-cart"></i>
                         <div className="amount-sp"></div>
-                     </Link>
-                     <i className="far fa-user-circle icon-circle"></i>
+                     </div>
+                     {user === "" ? (
+                        <div className="auth-customer">
+                           <i className="far fa-user-circle icon-circle"></i>
+                           <div className="auth-customer-selection">
+                              <Link
+                                 to={`/Auth-customer`}
+                                 className="auth-customer-selection_item"
+                              >
+                                 <i class="fas fa-sign-out-alt"></i>
+                                 <p>Đăng nhập</p>
+                              </Link>
+                           </div>
+                        </div>
+                     ) : (
+                        <div className="auth-customer">
+                           <i className="far fa-user-circle icon-circle"></i>
+                           <div className="auth-customer-selection">
+                              <div className="auth-customer-selection_item">
+                                 <i class="far fa-user-circle"></i>
+                                 <Link to="/info-account">
+                                    <p>Tài khoản</p>
+                                 </Link>
+                              </div>
+                              <div className="auth-customer-selection_item">
+                                 <i class="fas fa-clipboard-list"></i>{" "}
+                                 <Link to="/order-history">
+                                    <p>Lịch sử đặt hàng</p>
+                                 </Link>
+                              </div>
+                              <div
+                                 className="auth-customer-selection_item"
+                                 onClick={onSignOut}
+                              >
+                                 <i class="fas fa-sign-out-alt"></i>
+                                 <p>Đăng xuất</p>
+                              </div>
+                           </div>
+                        </div>
+                     )}
                   </div>
                </div>
 
@@ -60,6 +114,6 @@ export const NavBar = () => {
                </div>
             </div>
          </div>
-      </div>
+      </header>
    );
 };

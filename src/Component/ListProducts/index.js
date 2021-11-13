@@ -2,39 +2,22 @@ import React, { useEffect, useState } from "react";
 import cloudFireStore from "../../Service/CloudFireStore";
 import "./ListProducts.css";
 import ProductItem from "./ProductItem";
-const ListProducts = () => {
+const ListProducts = ({ inCart, updateListProductIncart, listProduct }) => {
    const [category, setCategory] = useState([]);
    const [categoryActive, setCategoryActive] = useState("");
-   const [listProduct, setListProduct] = useState([]); // all product
    const [listProductShow, setListProductShow] = useState([]); //list product show UI
    const [isShowList, setIsShowList] = useState(false);
 
    useEffect(() => {
       window.scrollBy(0, 0);
       onGetAllCategory();
-      onGetListProduct();
    }, []);
 
    useEffect(() => {
       onGetListProductJSX(12);
+      if (categoryActive === "") setListProductShow(listProduct);
       //show 12 item product
    }, [categoryActive, listProduct]);
-
-   const onGetListProduct = () => {
-      //get all product in doc "ListProduct" (Firebase)
-      let list = [];
-      cloudFireStore
-         .getAllData("ListProduct")
-         .then((doc) => {
-            doc.forEach((item) => {
-               list.push(item.data());
-            });
-            setListProduct(list);
-         })
-         .catch((error) => {
-            console.log("error", error);
-         });
-   };
 
    const onGetAllCategory = () => {
       //get all category in doc "Category" (Firebase)
@@ -67,7 +50,7 @@ const ListProducts = () => {
          if (categoryActive !== "") {
             const temp = [];
             listProduct.forEach((ele) => {
-               if (ele.category === categoryActive) {
+               if (ele.info.category === categoryActive) {
                   temp.push(ele);
                }
             });
@@ -102,12 +85,12 @@ const ListProducts = () => {
    };
 
    return (
-      <div className="listproduct" id="Orderpage">
+      <section className="listproduct" id="Orderpage">
          <div className=" grid wide listproduct__container">
             <div className="row no-gutters">
                <div className="col l-12 m-12 c-12">
                   <p className="listproduct__title">
-                     <i class="fas fa-trophy"></i> Sản phẩm từ EKO
+                     <i className="fas fa-trophy"></i> Sản phẩm từ EKO
                   </p>
                   <div className="category">
                      {category.map((ele, index) => {
@@ -138,7 +121,11 @@ const ListProducts = () => {
             <div className="row">
                {listProductShow.length > 0 ? (
                   listProductShow.map((ele, index) => (
-                     <ProductItem infoProduct={ele} key={index}></ProductItem>
+                     <ProductItem
+                        infoProduct={ele.info}
+                        id={ele.id}
+                        key={index}
+                     ></ProductItem>
                   ))
                ) : (
                   <p className="notify-empty-product">
@@ -151,11 +138,11 @@ const ListProducts = () => {
                   className="btn btn-showmore"
                   onClick={() => onGetListProductJSX(0)}
                >
-                  Xem tất cả <i class="fas fa-arrow-right"></i>
+                  Xem tất cả <i className="fas fa-arrow-right"></i>
                </button>
             ) : null}
          </div>
-      </div>
+      </section>
    );
 };
 export default ListProducts;
