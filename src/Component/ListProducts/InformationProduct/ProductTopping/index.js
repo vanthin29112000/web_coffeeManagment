@@ -19,7 +19,7 @@ export const ProductTopping = ({ topping, onAddTopping }) => {
             break;
          }
          case "blur": {
-            temp_amount = service_amount.onCheckedBlur(value, 0);
+            temp_amount = service_amount.onCheckedBlur(value, 0, 2);
 
             break;
          }

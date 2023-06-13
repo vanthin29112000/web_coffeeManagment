@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Carousel from "../../Layout/Carousel";
+// import Carousel from "../../Layout/Carousel";
 import cloudFireStore from "../../Service/CloudFireStore";
 import "./SlideShowBanner.css";
+import { Carousel } from "antd";
+import { LeftCircleOutlined, RightOutlined } from "@ant-design/icons";
+
 const SlideShowBanner = () => {
    const [listURL, setListURL] = useState([]);
 
@@ -18,22 +21,19 @@ const SlideShowBanner = () => {
       <div className="grid wide carousel_bg">
          <div className="row no-gutters carousel_container">
             <div className="col l-o-12 m-o-12 c-12">
-               {listURL.length > 0 ? (
-                  <Carousel countSlide={listURL.length} isShowDot={true}>
-                     <>
-                        {listURL.map((ele, index) => {
-                           return (
-                              <img
-                                 src={ele}
-                                 className="banner_img"
-                                 key={index}
-                                 alt="label.png"
-                              ></img>
-                           );
-                        })}
-                     </>
-                  </Carousel>
-               ) : null}
+               <Carousel autoplay>
+                  {listURL.length > 0 &&
+                     listURL.map((ele, index) => (
+                        <div>
+                           <img
+                              src={ele}
+                              className="banner_img"
+                              key={index}
+                              alt="label.png"
+                           ></img>
+                        </div>
+                     ))}
+               </Carousel>
             </div>
          </div>
       </div>

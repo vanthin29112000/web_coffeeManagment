@@ -15,28 +15,37 @@ const service_amount = {
          return 0;
       }
    },
-   onCheckedBlur: (value, defaultValue) => {
+   onCheckedBlur: (value, defaultValueMin, defaultValueMax) => {
       //set limit = 1
-      if (value == 0) {
-         return defaultValue;
+      if (value > defaultValueMax) {
+         return defaultValueMax;
+      }
+      if (value < defaultValueMin) {
+         return defaultValueMin;
+      } else {
+         return value;
       }
    },
    onIncreaseAmountProduct: (value, maxValue) => {
+      console.log("increase", value);
+
       let amountProduct = Number(value);
       if (amountProduct < maxValue) {
          amountProduct++;
          return amountProduct;
       } else {
-         return amountProduct;
+         return maxValue;
       }
    },
    onDecreaseAmountProduct: (value, defaultValue) => {
+      console.log("des", value);
+
       let amountProduct = Number(value);
       if (amountProduct > defaultValue) {
          amountProduct--;
          return amountProduct;
       } else {
-         return amountProduct;
+         return defaultValue;
       }
    },
 };

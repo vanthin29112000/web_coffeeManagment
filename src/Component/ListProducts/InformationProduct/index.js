@@ -5,16 +5,17 @@ import convert from "../../../Service/Convert";
 import service_amount from "../../../Service/Service_Amount";
 import "./InformationProduct.css";
 import { ProductTopping } from "./ProductTopping";
+import { CloseCircleOutlined } from "@ant-design/icons";
 const InformationProduct = ({ onAddIncart }) => {
-   const pagrams = new useParams();
-   const history = new useHistory();
+   const params = useParams();
+   const history = useHistory();
    const [idProduct, setIdProduct] = useState("");
    const [product, setProduct] = useState({});
    const [sumPrice, setSumPrice] = useState(0);
    const [productIncart, setProductIncart] = useState({
       amount: 1,
       info: {
-         id_product: pagrams.id,
+         id_product: params.id,
          note: "",
          size: {},
          topping: [],
@@ -27,9 +28,9 @@ const InformationProduct = ({ onAddIncart }) => {
    }, [sumPrice]);
 
    useEffect(() => {
-      setIdProduct(pagrams.id);
+      setIdProduct(params.id);
       cloudFireStore
-         .getDataId("ListProduct", pagrams.id)
+         .getDataId("ListProduct", params.id)
          .then((product) => {
             setProduct(product);
             let temp_productIncart = {
@@ -45,7 +46,7 @@ const InformationProduct = ({ onAddIncart }) => {
          .catch((error) => {
             console.log(error);
          });
-   }, [pagrams]);
+   }, [params]);
 
    useEffect(() => {
       onSumPrice();
@@ -72,7 +73,7 @@ const InformationProduct = ({ onAddIncart }) => {
          case "blur": {
             setProductIncart({
                ...productIncart,
-               amount: service_amount.onCheckedBlur(value, 1),
+               amount: service_amount.onCheckedBlur(value, 1, 99),
             });
             break;
          }
@@ -155,6 +156,7 @@ const InformationProduct = ({ onAddIncart }) => {
 
    const onAddIncartToCustomer = (e) => {
       e.preventDefault();
+      if (!product || !history) return;
       onAddIncart(productIncart);
       history.goBack();
    };
@@ -176,8 +178,7 @@ const InformationProduct = ({ onAddIncart }) => {
                            history.goBack();
                         }}
                      >
-                        <i className="fas fa-arrow-right"></i>
-                        Quay trở lại
+                        <CloseCircleOutlined />
                      </button>
                   </div>
                </div>

@@ -54,8 +54,12 @@ const ProductInCart = ({
       //set limit = 1
       e.preventDefault();
 
-      if (amount === 0) {
+      if (amount <= 0) {
          setAmount(1);
+      } else {
+         if (amount > 99) {
+            setAmount(99);
+         }
       }
    };
 

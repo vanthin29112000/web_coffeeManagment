@@ -21,6 +21,7 @@ import isEqual from "../../Service/IsEqual";
 import random from "../../Service/RandomId";
 import AuthCustomer from "../AuthCustomer";
 import "./HomePage.css";
+import { Carousel } from "antd";
 
 const HomePage = () => {
    const [user, setUser] = useState("");
